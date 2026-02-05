@@ -26,5 +26,10 @@
     "../../../../Library/Caches/JetBrains/WebStorm2025.3/javascript/typings/node/22.4.2/node_modules/@types/node/globals.global.d.ts",
     "../../../../Library/Caches/JetBrains/WebStorm2025.3/javascript/typings/node/22.4.2/node_modules/@types/node/globals.global.d.ts"
   ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "src/test"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
