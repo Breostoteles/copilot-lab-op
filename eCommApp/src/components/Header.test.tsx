@@ -78,7 +78,7 @@ describe('Header', () => {
     it('should render all navigation links', () => {
         renderHeader();
         const links = screen.getAllByRole('link');
-        expect(links).toHaveLength(5); // Home, Products, Cart, Contact us, Login
+        expect(links).toHaveLength(6); // Home, Products, About Us, Cart, Contact us, Login
     });
 
     it('should render h1 with correct text', () => {

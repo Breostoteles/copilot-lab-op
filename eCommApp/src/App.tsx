@@ -5,6 +5,7 @@ import LoginPage from './components/LoginPage';
 import AdminPage from './components/AdminPage';
 import CartPage from './components/CartPage';
 import ContactPage from './components/ContactPage';
+import AboutUs from './components/AboutUs';
 import { CartProvider } from './context/CartContext';
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/about" element={<AboutUs />} />
             </Routes>
         </CartProvider>
     );
