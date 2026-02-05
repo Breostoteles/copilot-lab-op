@@ -56,6 +56,13 @@ describe('Header', () => {
         expect(cartLink).toHaveAttribute('href', '/cart');
     });
 
+    it('should have Contact us link', () => {
+        renderHeader();
+        const contactLink = screen.getByRole('link', { name: /contact us/i });
+        expect(contactLink).toBeInTheDocument();
+        expect(contactLink).toHaveAttribute('href', '/contact');
+    });
+
     it('should have Admin Login button', () => {
         renderHeader();
         const adminButton = screen.getByRole('button', { name: /admin login/i });
@@ -71,7 +78,7 @@ describe('Header', () => {
     it('should render all navigation links', () => {
         renderHeader();
         const links = screen.getAllByRole('link');
-        expect(links).toHaveLength(4); // Home, Products, Cart, Login
+        expect(links).toHaveLength(5); // Home, Products, Cart, Contact us, Login
     });
 
     it('should render h1 with correct text', () => {
