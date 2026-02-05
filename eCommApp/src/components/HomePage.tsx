@@ -1,8 +1,31 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
 const HomePage = () => {
+    const [imageUrl, setImageUrl] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string>('');
+
+    const fetchFunnyAnimal = async () => {
+        setIsLoading(true);
+        setError('');
+        try {
+            const response = await fetch('https://random.dog/woof.json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch image');
+            }
+            const data = await response.json();
+            setImageUrl(data.url);
+        } catch (err) {
+            setError('Failed to load image');
+            console.error('Error fetching animal image:', err);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="app">
             <Header />
@@ -22,7 +45,20 @@ const HomePage = () => {
                         <Link to="/about" className="cta-button secondary">
                             Learn More
                         </Link>
+                        <button 
+                            onClick={fetchFunnyAnimal} 
+                            className="cta-button secondary"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Loading...' : 'Funny Animal'}
+                        </button>
                     </div>
+                    {error && <p className="error-message">{error}</p>}
+                    {imageUrl && (
+                        <div className="animal-image-container">
+                            <img src={imageUrl} alt="Random funny animal" className="animal-image" />
+                        </div>
+                    )}
                     <div className="features-grid">
                         <div className="feature-card">
                             <div className="feature-icon">🌱</div>
