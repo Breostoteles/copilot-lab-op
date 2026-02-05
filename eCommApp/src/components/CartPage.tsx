@@ -34,18 +34,18 @@ const CartPage = () => {
                 <main className="main-content">
                     <div className="order-processed-container">
                         <h2>Your order has been processed!</h2>
-                        <div className="cart-items-grid">
+                        <ul className="cart-items-grid">
                             {processedItems.map(item => (
-                                <div key={item.id} className="cart-item-card">
+                                <li key={item.id} className="cart-item-card">
                                     <img src={`products/productImages/${item.image}`} alt={item.name} className="cart-item-image" />
                                     <div className="cart-item-info">
                                         <h3>{item.name}</h3>
                                         <p>Price: ${item.price.toFixed(2)}</p>
                                         <p>Quantity: {item.quantity}</p>
                                     </div>
-                                </div>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </div>
                 </main>
                 <Footer />
@@ -63,18 +63,18 @@ const CartPage = () => {
                         <p>Your cart is empty.</p>
                     ) : (
                         <>
-                            <div className="cart-items-grid">
+                            <ul className="cart-items-grid">
                                 {cartItems.map(item => (
-                                    <div key={item.id} className="cart-item-card">
+                                    <li key={item.id} className="cart-item-card">
                                         <img src={`products/productImages/${item.image}`} alt={item.name} className="cart-item-image" />
                                         <div className="cart-item-info">
                                             <h3>{item.name}</h3>
                                             <p>Price: ${item.price.toFixed(2)}</p>
                                             <p>Quantity: {item.quantity}</p>
                                         </div>
-                                    </div>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                             <button onClick={handleCheckout} className="checkout-btn">Checkout</button>
                         </>
                     )}
