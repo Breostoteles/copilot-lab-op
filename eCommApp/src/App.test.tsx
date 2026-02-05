@@ -14,7 +14,7 @@ const renderWithRouter = (initialRoute = '/') => {
 describe('App', () => {
     it('should render HomePage at root route', () => {
         renderWithRouter('/');
-        expect(screen.getByText(/Welcome to the The Daily Harvest!/i)).toBeInTheDocument();
+        expect(screen.getByText(/Welcome to The Daily Harvest!/i)).toBeInTheDocument();
     });
 
     it('should render ProductsPage at /products route', () => {
@@ -52,8 +52,9 @@ describe('App', () => {
 
     it('should have navigation links', () => {
         renderWithRouter('/');
-        expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: /products/i })).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: /^home$/i })).toBeInTheDocument();
+        const productLinks = screen.getAllByRole('link', { name: /products/i });
+        expect(productLinks.length).toBeGreaterThan(0);
         expect(screen.getByRole('link', { name: /cart/i })).toBeInTheDocument();
     });
 

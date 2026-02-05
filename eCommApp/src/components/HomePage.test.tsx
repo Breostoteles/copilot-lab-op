@@ -38,18 +38,18 @@ describe('HomePage', () => {
 
     it('should display welcome heading', () => {
         renderHomePage();
-        expect(screen.getByText(/Welcome to the The Daily Harvest!/i)).toBeInTheDocument();
+        expect(screen.getByText(/Welcome to The Daily Harvest!/i)).toBeInTheDocument();
     });
 
     it('should display welcome message', () => {
         renderHomePage();
-        expect(screen.getByText(/Check out our products page for some great deals/i)).toBeInTheDocument();
+        expect(screen.getByText(/Your source for fresh, organic produce delivered daily/i)).toBeInTheDocument();
     });
 
     it('should render h2 heading', () => {
         renderHomePage();
         const heading = screen.getByRole('heading', { level: 2 });
-        expect(heading).toHaveTextContent('Welcome to the The Daily Harvest!');
+        expect(heading).toHaveTextContent('Welcome to The Daily Harvest!');
     });
 
     it('should have main element', () => {
@@ -78,8 +78,9 @@ describe('HomePage', () => {
 
     it('should have navigation links in header', () => {
         renderHomePage();
-        expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: /products/i })).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: /^home$/i })).toBeInTheDocument();
+        const productLinks = screen.getAllByRole('link', { name: /products/i });
+        expect(productLinks.length).toBeGreaterThan(0);
         expect(screen.getByRole('link', { name: /cart/i })).toBeInTheDocument();
     });
 });
